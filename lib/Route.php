@@ -24,12 +24,13 @@ class Route{
         foreach(self::$routes[$method] as $route => $callback){
 
             if(strpos($route, ':') !== false){
-                $route = preg_replace('#:[a-zA-Z0-9]+#', '([a-zA-Z]+)', $route);
+                $route = preg_replace('#:[a-zA-Z]+#', '([a-zA-Z]+)', $route);
                 
             }
             if(preg_match("#^$route$#",$uri, $matches)){
-                echo json_encode($matches);
-                //$callback();
+                
+                $params = array_slice($matches,1)
+                $callback(...$params)
                 return;
             }
             }

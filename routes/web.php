@@ -19,8 +19,8 @@ Route::post('/contact', function(){
     echo 'Contact form submitted';
 });
 
-Route::get("/courses/:slug", function(){
-    echo 'Default page';
+Route::get("/courses/:slug", function($slug){
+    echo 'El curso es' . $slug;
 });
 
 Route::dispatch();
